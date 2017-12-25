@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "standard"
+  ],
+
+  "rules": {
+    "comma-dangle": [ 2, "always-multiline" ]
+  },
+
+  "globals": {
+    "history": true,
+    "location": true,
+    "addEventListener": true,
+    "removeEventListener": true
+  }
+}

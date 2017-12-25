@@ -2,10 +2,16 @@
   "name": "mini-qs",
   "version": "0.0.1",
   "description": "Extremely small, client query string parser aiming for feature parity with Node",
-  "jsnext:main": "index.js",
-  "module": "index.js",
+  "main": "cjs/index.js",
+  "jsnext:main": "es/index.js",
+  "module": "es/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf cjs es",
+    "lint": "eslint src",
+    "build": "npm run build:cjs && npm run build:es",
+    "build:cjs": "BABEL_ENV=cjs babel src --out-dir cjs",
+    "build:es": "BABEL_ENV=es babel src --out-dir es",
+    "prepublish": "npm run lint && npm run clean && npm run build"
   },
   "repository": {
     "type": "git",
@@ -16,5 +22,17 @@
   "bugs": {
     "url": "https://github.com/lohfu/mini-qs/issues"
   },
-  "homepage": "https://github.com/lohfu/mini-qs#readme"
+  "homepage": "https://github.com/lohfu/mini-qs#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.35",
+    "@babel/core": "^7.0.0-beta.35",
+    "@babel/preset-env": "^7.0.0-beta.35",
+    "eslint": "^4.14.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "rimraf": "^2.6.2"
+  }
 }
