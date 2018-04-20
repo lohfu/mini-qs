@@ -34,11 +34,7 @@ export function parse (str) {
   return str.replace(/\+/g, ' ').split('&').reduce((result, str) => {
     const arr = str.split('=')
 
-    if (arr.length === 1) {
-      return
-    }
-
-    const [key, val] = arr.map(decodeURIComponent)
+    const [key, val = ''] = arr.map(decodeURIComponent)
 
     // if there are multiple values per key, concatenate
     result[key] = key in result ? [].concat(result[key], val) : val
