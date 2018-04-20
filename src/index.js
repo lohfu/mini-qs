@@ -8,17 +8,19 @@ export function stringify (obj) {
 
     let value = obj[key]
 
-    if (Array.isArray(value)) {
-      return result.concat(value.map((value) => `${key}=${encodeURIComponent(value)}`))
-    }
+    if (value !== undefined) {
+      if (Array.isArray(value)) {
+        return result.concat(value.map((value) => `${key}=${encodeURIComponent(value)}`))
+      }
 
-    if (!value || typeof value === 'object') {
-      value = ''
-    } else {
-      value = encodeURIComponent(value)
-    }
+      if (!value || typeof value === 'object') {
+        value = ''
+      } else {
+        value = encodeURIComponent(value)
+      }
 
-    result.push(`${key}=${value}`)
+      result.push(`${key}=${value}`)
+    }
 
     return result
   }, []).join('&')
