@@ -7,11 +7,12 @@
   "module": "es/index.js",
   "scripts": {
     "clean": "rimraf cjs es",
-    "lint": "eslint src",
+    "lint": "eslint src test",
     "build": "npm run build:cjs && npm run build:es",
     "build:cjs": "BABEL_ENV=cjs babel src --out-dir cjs",
     "build:es": "BABEL_ENV=es babel src --out-dir es",
-    "prepublish": "npm run lint && npm run clean && npm run build"
+    "prepublish": "npm run lint && npm run clean && npm run build",
+    "test": "node test"
   },
   "repository": {
     "type": "git",
@@ -33,6 +34,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "tape": "^4.9.0"
   }
 }
