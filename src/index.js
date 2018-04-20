@@ -4,9 +4,9 @@ export function stringify (obj) {
   }
 
   return Object.keys(obj).reduce((result, key) => {
-    key = encodeURIComponent(key)
-
     let value = obj[key]
+
+    key = encodeURIComponent(key)
 
     if (value !== undefined) {
       if (Array.isArray(value)) {
