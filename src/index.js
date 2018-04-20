@@ -1,4 +1,8 @@
 export function stringify (obj) {
+  if (!obj) {
+    return ''
+  }
+
   return Object.keys(obj).reduce((result, key) => {
     key = encodeURIComponent(key)
 
@@ -21,6 +25,10 @@ export function stringify (obj) {
 }
 
 export function parse (str) {
+  if (!str) {
+    return {}
+  }
+
   return str.replace(/\+/g, ' ').split('&').reduce((result, str) => {
     const arr = str.split('=')
 
