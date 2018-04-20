@@ -13,13 +13,13 @@ export function stringify (obj) {
         return result.concat(value.map((value) => `${key}=${encodeURIComponent(value)}`))
       }
 
-      if (!value || typeof value === 'object') {
+      if (value instanceof Date) {
+        value = value.toISOString()
+      } else if (value === null || typeof value === 'object') {
         value = ''
-      } else {
-        value = encodeURIComponent(value)
       }
 
-      result.push(`${key}=${value}`)
+      result.push(`${key}=${encodeURIComponent(value)}`)
     }
 
     return result
