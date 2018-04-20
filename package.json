@@ -1,6 +1,6 @@
 {
   "name": "mini-qs",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Extremely small, client query string parser aiming for feature parity with Node",
   "main": "cjs/index.js",
   "jsnext:main": "es/index.js",
